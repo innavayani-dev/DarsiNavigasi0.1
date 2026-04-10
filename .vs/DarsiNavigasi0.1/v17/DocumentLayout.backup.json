@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "E:\\DarsiNavigasi0.1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|e:\\darsinavigasi0.1\\assets\\scripts\\pathdistancecalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\pathdistancecalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|e:\\darsinavigasi0.1\\assets\\scripts\\arpathdistance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\arpathdistance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|e:\\darsinavigasi0.1\\assets\\samples\\immersal sdk\\2.2.1\\core samples\\scripts\\navigation\\navigation target list\\navigationtargetlistcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|E:\\DarsiNavigasi0.1\\assets\\samples\\immersal sdk\\2.2.1\\core samples\\scripts\\navigation\\navigation target list\\navigationtargetlistcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|solutionrelative:assets\\samples\\immersal sdk\\2.2.1\\core samples\\scripts\\navigation\\navigation target list\\navigationtargetlistcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -67,14 +67,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PathDistanceCalculator.cs",
-              "DocumentMoniker": "E:\\DarsiNavigasi0.1\\Assets\\Scripts\\PathDistanceCalculator.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\PathDistanceCalculator.cs",
-              "ToolTip": "E:\\DarsiNavigasi0.1\\Assets\\Scripts\\PathDistanceCalculator.cs",
-              "RelativeToolTip": "Assets\\Scripts\\PathDistanceCalculator.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAgwEwAAAABAAAAAAAAAA==",
+              "Title": "ARPathDistance.cs",
+              "DocumentMoniker": "E:\\DarsiNavigasi0.1\\Assets\\Scripts\\ARPathDistance.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ARPathDistance.cs",
+              "ToolTip": "E:\\DarsiNavigasi0.1\\Assets\\Scripts\\ARPathDistance.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ARPathDistance.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-09T17:50:23.926Z",
+              "WhenOpened": "2026-04-09T18:23:46.748Z",
               "EditorCaption": ""
             },
             {
@@ -87,8 +87,7 @@
               "RelativeToolTip": "Assets\\Samples\\Immersal SDK\\2.2.1\\Core Samples\\Scripts\\Navigation\\Navigation Target List\\NavigationTargetListControl.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAGIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T08:14:35.547Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T08:14:35.547Z"
             },
             {
               "$type": "Document",
