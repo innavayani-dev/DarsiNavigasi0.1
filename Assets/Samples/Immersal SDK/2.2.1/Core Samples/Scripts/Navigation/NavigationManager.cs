@@ -1,19 +1,14 @@
 ﻿/*===============================================================================
-Copyright (C) 2024 Immersal - Part of Hexagon. All Rights Reserved.
-
-This file is part of the Immersal SDK.
-
-The Immersal SDK cannot be copied, distributed, or made available to
-third-parties for commercial purposes without written permission of Immersal Ltd.
-
-Contact sales@immersal.com for licensing requests.
+REVISI TOTAL: FIX UI, AUTO-DETECTION, & DATABASE INTEGRATION
+Dibuat untuk: Alif (Tugas Akhir Navigasi Indoor PENS - RSI Ahmad Yani)
 ===============================================================================*/
 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using UnityEngine.Networking;
 using Immersal.XR;
 using Immersal.Samples.Util;
 using TMPro;
@@ -21,446 +16,263 @@ using TMPro;
 namespace Immersal.Samples.Navigation
 {
     [System.Serializable]
-    public class NavigationEvent : UnityEvent<Transform>
-    {
-    }
+    public class RoomItem { public string room_id; public string room_name; }
+
+    [System.Serializable]
+    public class RoomListResponse { public bool status; public RoomItem[] data; }
+
+    [System.Serializable]
+    public class MapResponse { public string room_id; public string coordinates; public string room_name; public string Floor_ID; }
 
     public class NavigationManager : MonoBehaviour
     {
-        // Navigation Visualization references
-        [Header("Visualization")]
-        [SerializeField]
-        private GameObject m_navigationPathPrefab = null;
-        /*
-        [SerializeField]
-        private GameObject m_navigationArrowPrefab = null;
-        */
+        [Header("--- KONEKSI BACKEND VERCEL ---")]
+        public string serverURL = "https://indoor-nav-backend.vercel.app";
 
-        // UI Object references
-        [Header("UI Objects")]
-        [SerializeField]
-        private GameObject m_TargetsList = null;
-        [SerializeField]
-        private Sprite m_ShowListIcon = null;
-        [SerializeField]
-        private Sprite m_SelectTargetIcon = null;
-        [SerializeField]
-        private Image m_TargetsListIcon = null;
-        [SerializeField]
-        private TextMeshProUGUI m_TargetsListText = null;
-        [SerializeField]
-        private GameObject m_StopNavigationButton = null;
+        [Header("--- PENGATURAN UI (LIST RUANGAN) ---")]
+        public GameObject listPanel;
+        public Transform listContainer;
+        public GameObject roomButtonPrefab;
+        public GameObject showNavigationButton; // Pasang tombol utama lu di sini
 
-        // Navigation Settings
-        private enum NavigationMode { NavMesh, Graph};
-        [Header("Settings")]
-        [SerializeField]
-        private NavigationMode m_navigationMode = NavigationMode.NavMesh;
-        public bool inEditMode = false;
-        /*
-        [SerializeField]
-        private bool m_showArrow = true;
-        */
-        [SerializeField]
-        private float m_ArrivedDistanceThreshold = 1.0f;
-        [SerializeField]
-        private float m_pathWidth = 0.3f;
-        [SerializeField]
-        private float m_heightOffset = 0.1f;
+        [Header("--- TARGET VISUAL (PHANTOM) ---")]
+        public GameObject phantomTargetObject;
 
-        // Navigation State Events
-        [Header("Events")]
-        [SerializeField]
-        private NavigationEvent onTargetFound = new NavigationEvent();
-        [SerializeField]
-        private NavigationEvent onTargetNotFound = new NavigationEvent();
+        [Header("--- VISUALISASI JALUR ---")]
+        [SerializeField] private GameObject m_navigationPathPrefab = null;
+        [SerializeField] private GameObject m_StopNavigationButton = null;
+
+        [Header("--- PARAMETER NAVIGASI ---")]
+        [SerializeField] private float m_ArrivedDistanceThreshold = 1.2f;
+        [SerializeField] private float m_pathWidth = 0.35f;
+        [SerializeField] private float m_heightOffset = 0.15f;
+
+        // --- MODE KOMPATIBILITAS AGAR TIDAK ERROR ---
+        [HideInInspector] public bool inEditMode = false;
+        public void ToggleEditMode() { inEditMode = !inEditMode; }
+        public void InitializeNavigation(NavigationTargetListButton button) { }
+        public void ToggleTargetsList() { ToggleNavigationList(); }
 
         private XRSpace m_XRSpace = null;
         private bool m_managerInitialized = false;
-        private bool m_navigationActive = false;
-        private Transform m_targetTransform = null;
         private IsNavigationTarget m_NavigationTarget = null;
         private Transform m_playerTransform = null;
         private GameObject m_navigationPathObject = null;
         private NavigationPath m_navigationPath = null;
 
-        [SerializeField]
-        private NavigationGraphManager m_NavigationGraphManager = null;
-
-        private enum NavigationState { NotNavigating, Navigating};
+        private enum NavigationState { NotNavigating, Navigating };
         private NavigationState m_navigationState = NavigationState.NotNavigating;
 
         private static NavigationManager instance = null;
-        public static NavigationManager Instance
-        {
-            get
-            {
-#if UNITY_EDITOR
-                if (instance == null && !Application.isPlaying)
-                {
-                    instance = FindObjectOfType<NavigationManager>();
-                }
-#endif
-                if (instance == null)
-                {
-                    Debug.LogError("No NavigationManager instance found. Ensure one exists in the scene.");
-                }
-                return instance;
-            }
-        }
+        public static NavigationManager Instance { get { return instance; } }
 
-        public bool navigationActive
-        {
-            get { return m_navigationActive; }
-        }
-
-        void Awake()
-        {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            if (instance != this)
-            {
-                Debug.LogError("NavigationManager: There must be only one NavigationManager in a scene.");
-                UnityEngine.Object.DestroyImmediate(this);
-                return;
-            }
-        }
+        void Awake() { if (instance == null) instance = this; }
 
         private void Start()
         {
             InitializeNavigationManager();
+            
+            // Safety: Paksa phantom dapet component target
+            if (phantomTargetObject != null) 
+                m_NavigationTarget = phantomTargetObject.GetComponent<IsNavigationTarget>();
 
-            if (m_managerInitialized)
+            // Sembunyikan panel list diawal
+            if (listPanel != null) listPanel.SetActive(false);
+            
+            // Cek apakah tombol utama ada
+            if (showNavigationButton == null) 
+                Debug.LogWarning("⚠️ Tombol 'Show Navigation' belum ditarik ke Inspector!");
+        }
+
+        // FUNGSI UTAMA: Dipanggil saat tombol di klik
+        public void ToggleNavigationList()
+        {
+            if (listPanel == null) {
+                Debug.LogError("❌ listPanel kosong di Inspector! Tarik Scroll View ke sini.");
+                return;
+            }
+
+            bool isShow = !listPanel.activeSelf;
+            listPanel.SetActive(isShow);
+
+            if (isShow) {
+                Debug.Log("📡 Membuka daftar ruangan...");
+                StartCoroutine(FetchRoomsFromDatabase());
+            }
+        }
+
+        IEnumerator FetchRoomsFromDatabase()
+        {
+            // Bersihkan list lama
+            foreach (Transform child in listContainer) Destroy(child.gameObject);
+
+            string url = serverURL + "/api/get-room-list";
+            using (UnityWebRequest request = UnityWebRequest.Get(url))
             {
-                m_TargetsListIcon.sprite = m_ShowListIcon;
-                m_TargetsListText.text = "Show Navigation Targets";
+                yield return request.SendWebRequest();
+
+                if (request.result == UnityWebRequest.Result.Success)
+                {
+                    RoomListResponse response = JsonUtility.FromJson<RoomListResponse>(request.downloadHandler.text);
+                    if (response != null && response.status)
+                    {
+                        foreach (RoomItem room in response.data)
+                        {
+                            GameObject btn = Instantiate(roomButtonPrefab, listContainer);
+                            btn.GetComponentInChildren<TMP_Text>().text = room.room_name;
+                            string id = room.room_id;
+                            btn.GetComponent<Button>().onClick.AddListener(() => OnRoomSelected(id));
+                        }
+                    }
+                }
+                else { Debug.LogError("❌ Gagal ambil data: " + request.error); }
+            }
+        }
+
+        void OnRoomSelected(string roomId)
+        {
+            if (listPanel != null) listPanel.SetActive(false);
+            StartCoroutine(GetRoomCoordinates(roomId));
+        }
+
+        IEnumerator GetRoomCoordinates(string roomId)
+        {
+            string url = serverURL + "/api/map/" + roomId;
+            using (UnityWebRequest request = UnityWebRequest.Get(url))
+            {
+                yield return request.SendWebRequest();
+                if (request.result == UnityWebRequest.Result.Success)
+                {
+                    MapResponse data = JsonUtility.FromJson<MapResponse>(request.downloadHandler.text);
+                    if (data != null && !string.IsNullOrEmpty(data.coordinates))
+                    {
+                        string[] p = data.coordinates.Split(',');
+                        float x = float.Parse(p[0], System.Globalization.CultureInfo.InvariantCulture);
+                        float y = float.Parse(p[1], System.Globalization.CultureInfo.InvariantCulture);
+                        float z = float.Parse(p[2], System.Globalization.CultureInfo.InvariantCulture);
+
+                        if (phantomTargetObject != null)
+                        {
+                            phantomTargetObject.SetActive(true);
+                            phantomTargetObject.transform.localPosition = new Vector3(x, y + 0.1f, z);
+
+                            // --- TAMBAHAN BARU: JURUS PAKSA NYALAKAN VISUAL ---
+                            // Ini bakal nyari semua Mesh Renderer di dalam Phantom dan mencentangnya!
+                            MeshRenderer[] renderers = phantomTargetObject.GetComponentsInChildren<MeshRenderer>(true);
+                            foreach (MeshRenderer mr in renderers)
+                            {
+                                mr.enabled = true;
+                            }
+                            // -------------------------------------------------
+
+                            m_navigationState = NavigationState.Navigating;
+
+                            // SIMPAN RIWAYAT (Nama diganti ke Alif)
+                            SimpanRiwayat("Muchammad Alif", "Lobby Utama", data.room_name, data.coordinates);
+                            UpdateNavigationUI(m_navigationState);
+                        }
+
+                        // SIMPAN RIWAYAT (Nama diganti ke Alif)
+                        SimpanRiwayat("Muchammad Alif", "Lobby Utama", data.room_name, data.coordinates);
+                        UpdateNavigationUI(m_navigationState);
+                    }
+                }
+            }
+        }
+
+        public void SimpanRiwayat(string userId, string dari, string ke, string pos)
+        {
+            StartCoroutine(PostHistoryToVercel(userId, dari, ke, pos));
+        }
+
+        IEnumerator PostHistoryToVercel(string userId, string dari, string ke, string pos)
+        {
+            string url = serverURL + "/api/save-history";
+            WWWForm form = new WWWForm();
+            form.AddField("user_id", userId);
+            form.AddField("mulai", dari);
+            form.AddField("tujuan", ke);
+            form.AddField("koordinat", pos);
+
+            using (UnityWebRequest www = UnityWebRequest.Post(url, form))
+            {
+                yield return www.SendWebRequest();
+                if (www.result == UnityWebRequest.Result.Success)
+                    Debug.Log("✅ Riwayat Berhasil Dicatat ke TiDB!");
             }
         }
 
         private void Update()
         {
-            if(m_managerInitialized && m_navigationState == NavigationState.Navigating)
+            if (m_managerInitialized && m_navigationState == NavigationState.Navigating)
             {
-                TryToFindPath(m_NavigationTarget);
+                DrawARPath();
             }
         }
 
-        public void InitializeNavigation(NavigationTargetListButton button)
+        void DrawARPath()
         {
-            if (!m_managerInitialized)
+            if (m_playerTransform == null || m_NavigationTarget == null) return;
+
+            Vector3 start = m_playerTransform.position;
+            Vector3 target = m_NavigationTarget.transform.position;
+
+            if (Vector3.Distance(start, target) < m_ArrivedDistanceThreshold)
             {
-                Debug.LogWarning("NavigationManager: Navigation Manager not properly initialized.");
+                StopNavigation();
                 return;
             }
 
-            m_targetTransform = button.targetObject.transform;
-            m_NavigationTarget = button.targetObject.GetComponent<IsNavigationTarget>();
-            TryToFindPath(m_NavigationTarget);
-        }
+            Vector3 s = XRSpaceToUnity(m_XRSpace.transform, m_XRSpace.InitialPose, start);
+            Vector3 t = XRSpaceToUnity(m_XRSpace.transform, m_XRSpace.InitialPose, target);
 
-        public void TryToFindPath(IsNavigationTarget navigationTarget)
-        {
-            List<Vector3> corners;
-
-            // Convert to Unity's world space coordinates to use NavMesh
-            Vector3 startPosition = m_playerTransform.position;
-            Vector3 targetPosition = navigationTarget.position;
-
-            Vector3 delta = targetPosition - startPosition;
-            float distanceToTarget = new Vector3(delta.x, delta.y, delta.z).magnitude;
-
-            if (distanceToTarget < m_ArrivedDistanceThreshold)
-            {
-                m_navigationActive = false;
-
-                m_navigationState = NavigationState.NotNavigating;
-                UpdateNavigationUI(m_navigationState);
-
-                DisplayArrivedNotification();
-                return;
-            }
-
-            switch (m_navigationMode)
-            {
-                case NavigationMode.NavMesh:
-
-                    startPosition = XRSpaceToUnity(m_XRSpace.transform, m_XRSpace.InitialPose, startPosition);
-                    targetPosition = XRSpaceToUnity(m_XRSpace.transform, m_XRSpace.InitialPose, targetPosition);
-
-                    corners = FindPathNavMesh(startPosition, targetPosition);
-                    if (corners.Count >= 2)
-                    {
-                        m_navigationActive = true;
-
-                        m_navigationState = NavigationState.Navigating;
-                        UpdateNavigationUI(m_navigationState);
-
-                        m_navigationPath.GeneratePath(corners, m_XRSpace.transform.up);
-                        m_navigationPath.pathWidth = m_pathWidth;
-                    }
-                    else
-                    {
-                        NotificationManager.Instance.GenerateNotification("Path to target not found.");
-                        UpdateNavigationUI(m_navigationState);
-                    }
-                    break;
-
-                case NavigationMode.Graph:
-
-                    corners = m_NavigationGraphManager.FindPath(startPosition, targetPosition);
-
-                    if (corners.Count >= 2)
-                    {
-                        m_navigationActive = true;
-
-                        m_navigationState = NavigationState.Navigating;
-                        UpdateNavigationUI(m_navigationState);
-
-                        m_navigationPath.GeneratePath(corners, m_XRSpace.transform.up);
-                        m_navigationPath.pathWidth = m_pathWidth;
-                    }
-                    else
-                    {
-                        NotificationManager.Instance.GenerateNotification("Path to target not found.");
-                        UpdateNavigationUI(m_navigationState);
-                    }
-                    break;
-            }
-        }
-
-        private List<Vector3> FindPathNavMesh(Vector3 startPosition, Vector3 targetPosition)
-        {
             NavMeshPath path = new NavMeshPath();
-            List<Vector3> collapsedCorners = new List<Vector3>();
-
-            if (NavMesh.CalculatePath(startPosition, targetPosition, NavMesh.AllAreas, path))
+            if (NavMesh.CalculatePath(s, t, NavMesh.AllAreas, path))
             {
-                List<Vector3> corners = new List<Vector3>(path.corners);
-
-                for (int i = 0; i < corners.Count; i++)
+                List<Vector3> corners = new List<Vector3>();
+                foreach (var c in path.corners)
                 {
-                    corners[i] = corners[i] + new Vector3(0f, m_heightOffset, 0f);
-                    corners[i] = UnityToXRSpace(m_XRSpace.transform, m_XRSpace.InitialPose, corners[i]);
+                    corners.Add(UnityToXRSpace(m_XRSpace.transform, m_XRSpace.InitialPose, c + new Vector3(0, m_heightOffset, 0)));
                 }
-
-                for (int i = 0; i < corners.Count - 1; i++)
-                {
-                    Vector3 currentPoint = corners[i];
-                    Vector3 nextPoint = corners[i + 1];
-                    float threshold = 0.75f;
-
-                    if (Vector3.Distance(currentPoint, nextPoint) > threshold)
-                    {
-                        collapsedCorners.Add(currentPoint);
-                    }
-                }
-
-                collapsedCorners.Add(corners[corners.Count - 1]);
+                m_navigationPath.GeneratePath(corners, m_XRSpace.transform.up);
+                m_navigationPath.pathWidth = m_pathWidth;
             }
-
-            return collapsedCorners;
-        }
-
-        public void ToggleTargetsList()
-        {
-            if (!m_managerInitialized)
-            {
-                Debug.LogWarning("NavigationManager: Navigation Manager not properly initialized.");
-                return;
-            }
-
-            if (m_TargetsList.activeInHierarchy)
-            {
-                m_TargetsList.SetActive(false);
-                if (m_ShowListIcon != null && m_TargetsListIcon != null)
-                {
-                    m_TargetsListIcon.sprite = m_ShowListIcon;
-                }
-                if (m_TargetsListText != null)
-                {
-                    m_TargetsListText.text = "Show Navigation Targets";
-                }
-            }
-            else
-            {
-                m_TargetsList.SetActive(true);
-                m_TargetsList.GetComponent<NavigationTargetListControl>().GenerateButtons();
-                if (m_SelectTargetIcon != null && m_TargetsListIcon != null)
-                {
-                    m_TargetsListIcon.sprite = m_SelectTargetIcon;
-                }
-                if (m_TargetsListText != null)
-                {
-                    m_TargetsListText.text = "Select Navigation Target";
-                }
-            }
-        }
-
-        public void ToggleEditMode()
-        {
-            inEditMode = !inEditMode;
-        }
-
-        public void DisplayPathNotFoundNotification()
-        {
-#if !(UNITY_STANDALONE)
-            Handheld.Vibrate();
-#endif
-            NotificationManager.Instance.GenerateNotification("Path to target could not be found.");
-            onTargetNotFound.Invoke(m_targetTransform);
-        }
-
-        public void DisplayArrivedNotification()
-        {
-#if !(UNITY_STANDALONE)
-            Handheld.Vibrate();
-#endif
-            NotificationManager.Instance.GenerateNotification("You have arrived!");
-            onTargetFound.Invoke(m_targetTransform);
         }
 
         public void StopNavigation()
         {
-            m_navigationActive = false;
-
             m_navigationState = NavigationState.NotNavigating;
-            UpdateNavigationUI(m_navigationState);
+            if (phantomTargetObject != null) phantomTargetObject.SetActive(false);
 
-            NotificationManager.Instance.GenerateNotification("Navigation stopped.");
+            UpdateNavigationUI(m_navigationState);
         }
 
-        private void UpdateNavigationUI(NavigationState navigationState)
+        private void UpdateNavigationUI(NavigationState state)
         {
-            switch(navigationState)
-            {
-                case NavigationState.NotNavigating:
-                    m_StopNavigationButton.SetActive(false);
-                    m_navigationPathObject.SetActive(false);
-                    break;
-                case NavigationState.Navigating:
-                    m_StopNavigationButton.SetActive(true);
-                    m_navigationPathObject.SetActive(true);
-                    break;
-            }
+            if (m_StopNavigationButton) m_StopNavigationButton.SetActive(state == NavigationState.Navigating);
+            if (m_navigationPathObject) m_navigationPathObject.SetActive(state == NavigationState.Navigating);
         }
 
         private void InitializeNavigationManager()
         {
-            if (m_XRSpace == null)
+            if (m_XRSpace == null) m_XRSpace = FindObjectOfType<XRSpace>();
+            
+            // WAJIB: Mencari kamera dengan tag MainCamera
+            if (Camera.main != null)
+                m_playerTransform = Camera.main.transform;
+            else
+                Debug.LogError("❌ Objek 'Main Camera' tidak ditemukan! Pastikan Tag-nya benar.");
+
+            if (m_navigationPathPrefab != null)
             {
-                m_XRSpace = FindObjectOfType<XRSpace>();
-
-                if (m_XRSpace == null)
-                {
-                    Debug.LogWarning("NavigationManager: No XR Space found in scene, ensure one exists.");
-                    return;
-                }
+                m_navigationPathObject = Instantiate(m_navigationPathPrefab);
+                m_navigationPathObject.SetActive(false);
+                m_navigationPath = m_navigationPathObject.GetComponent<NavigationPath>();
             }
-
-            m_NavigationGraphManager = GetComponent<NavigationGraphManager>();
-            if (m_NavigationGraphManager == null)
-            {
-                Debug.LogWarning("NavigationManager: Missing Navigation Graph Manager component.");
-                return;
-            }
-
-            m_playerTransform = Camera.main.transform;
-            if (m_playerTransform == null)
-            {
-                Debug.LogWarning("NavigationManager: Could not find the main camera. Do you have the MainCamera tag applied?");
-                return;
-            }
-
-            if (m_navigationPathPrefab == null)
-            {
-                Debug.LogWarning("NavigationManager: Missing navigation path object reference.");
-                return;
-            }
-
-            if(m_navigationPathPrefab != null)
-            {
-                if (m_navigationPathObject == null)
-                {
-                    m_navigationPathObject = Instantiate(m_navigationPathPrefab);
-                    m_navigationPathObject.SetActive(false);
-                    m_navigationPath = m_navigationPathObject.GetComponent<NavigationPath>();
-                }
-
-                if(m_navigationPath == null)
-                {
-                    Debug.LogWarning("NavigationManager: NavigationPath component in Navigation path is missing.");
-                    return;
-                }
-            }
-
-            if (m_TargetsList == null)
-            {
-                Debug.LogWarning("NavigationManager: Navigation Targets List reference is missing.");
-                return;
-            }
-
-            if (m_ShowListIcon == null)
-            {
-                Debug.LogWarning("NavigationManager: \"Show List\" icon is missing.");
-                return;
-            }
-
-            if (m_SelectTargetIcon == null)
-            {
-                Debug.LogWarning("NavigationManager: \"Select Target\" icon is missing.");
-                return;
-            }
-
-            if (m_TargetsListIcon == null)
-            {
-                Debug.LogWarning("NavigationManager: \"Targets List\" icon reference is missing.");
-                return;
-            }
-
-            if (m_TargetsListText == null)
-            {
-                Debug.LogWarning("NavigationManager: \"Targets List\" text reference is missing.");
-                return;
-            }
-
-            if (m_StopNavigationButton == null)
-            {
-                Debug.LogWarning("NavigationManager: Stop Navigation Button reference is missing.");
-                return;
-            }
-
             m_managerInitialized = true;
         }
 
-        private Vector3 XRSpaceToUnity(Transform XRSpace, Matrix4x4 XRSpaceOffset, Vector3 pos)
-        {
-            Matrix4x4 m = XRSpace.worldToLocalMatrix;
-            pos = m.MultiplyPoint(pos);
-            pos = XRSpaceOffset.MultiplyPoint(pos);
-            return pos;
-        }
-
-        private Vector3 XRSpaceToUnity(Transform XRSpace, Vector3 pos)
-        {
-            pos = XRSpaceToUnity(XRSpace, Matrix4x4.identity, pos);
-            return pos;
-        }
-
-        private Vector3 UnityToXRSpace(Transform XRSpace, Matrix4x4 XRSpaceOffset, Vector3 pos)
-        {
-            pos = XRSpaceOffset.inverse.MultiplyPoint(pos);
-            Matrix4x4 m = XRSpace.localToWorldMatrix;
-            pos = m.MultiplyPoint(pos);
-            return pos;
-        }
-
-        private Vector3 UnityToXRSpace(Transform XRSpace, Vector3 pos)
-        {
-            pos = UnityToXRSpace(XRSpace, Matrix4x4.identity, pos);
-            return pos;
-        }
-
+        private Vector3 XRSpaceToUnity(Transform s, Matrix4x4 o, Vector3 p) { return o.MultiplyPoint(s.worldToLocalMatrix.MultiplyPoint(p)); }
+        private Vector3 UnityToXRSpace(Transform s, Matrix4x4 o, Vector3 p) { return s.localToWorldMatrix.MultiplyPoint(o.inverse.MultiplyPoint(p)); }
     }
 }

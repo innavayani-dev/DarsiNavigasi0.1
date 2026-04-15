@@ -1404,25 +1404,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf37ac898de460f4ba5edf8c0c4a5767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serverURL: https://indoor-nav-backend.vercel.app
+  listPanel: {fileID: 0}
+  listContainer: {fileID: 0}
+  roomButtonPrefab: {fileID: 0}
+  phantomTargetObject: {fileID: 0}
   m_navigationPathPrefab: {fileID: 8334439697003780456, guid: 3de49105f88532e459a60fdcbeaadcd0, type: 3}
-  m_TargetsList: {fileID: 1522469319996562496}
-  m_ShowListIcon: {fileID: 21300000, guid: 8134afc874eee5840ac83c960cc749e2, type: 3}
-  m_SelectTargetIcon: {fileID: 21300000, guid: e3bd3e3948552cd4199ae4902a3f9796, type: 3}
-  m_TargetsListIcon: {fileID: 6070779392955733396}
-  m_TargetsListText: {fileID: 1761617640367274701}
   m_StopNavigationButton: {fileID: 2450008143194284442}
-  m_navigationMode: 1
-  inEditMode: 0
   m_ArrivedDistanceThreshold: 1
   m_pathWidth: 0.3
   m_heightOffset: 0.5
-  onTargetFound:
-    m_PersistentCalls:
-      m_Calls: []
-  onTargetNotFound:
-    m_PersistentCalls:
-      m_Calls: []
-  m_NavigationGraphManager: {fileID: 5236585359101227015}
+  inEditMode: 0
 --- !u!114 &5236585359101227015
 MonoBehaviour:
   m_ObjectHideFlags: 0

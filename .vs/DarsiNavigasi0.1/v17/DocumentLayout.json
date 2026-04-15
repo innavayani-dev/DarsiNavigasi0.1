@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "E:\\DarsiNavigasi0.1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|e:\\darsinavigasi0.1\\assets\\scripts\\minimapfollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|e:\\darsinavigasi0.1\\assets\\samples\\immersal sdk\\2.2.1\\core samples\\scripts\\navigation\\navigationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|solutionrelative:assets\\samples\\immersal sdk\\2.2.1\\core samples\\scripts\\navigation\\navigationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|E:\\DarsiNavigasi0.1\\assets\\scripts\\minimapfollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\minimapfollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|e:\\darsinavigasi0.1\\assets\\scripts\\arpathdistance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|E:\\DarsiNavigasi0.1\\assets\\scripts\\arpathdistance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\arpathdistance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -31,10 +35,6 @@
       "RelativeMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|solutionrelative:assets\\samples\\immersal sdk\\2.2.1\\core samples\\scripts\\navigation\\graph\\navigationgraphmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|E:\\DarsiNavigasi0.1\\assets\\samples\\immersal sdk\\2.2.1\\core samples\\scripts\\navigation\\navigationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9273902A-E6EC-1F5F-5728-2634837F162B}|Assembly-CSharp.csproj|solutionrelative:assets\\samples\\immersal sdk\\2.2.1\\core samples\\scripts\\navigation\\navigationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Magang\\unity\\DarsiNavigasi0.1\\Assets\\Scripts\\NavigationController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -53,7 +53,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
@@ -70,33 +70,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MiniMapFollow.cs",
-              "DocumentMoniker": "E:\\DarsiNavigasi0.1\\Assets\\Scripts\\MiniMapFollow.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\MiniMapFollow.cs",
-              "ToolTip": "E:\\DarsiNavigasi0.1\\Assets\\Scripts\\MiniMapFollow.cs",
-              "RelativeToolTip": "Assets\\Scripts\\MiniMapFollow.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T16:36:09.728Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ARPathDistance.cs",
-              "DocumentMoniker": "E:\\DarsiNavigasi0.1\\Assets\\Scripts\\ARPathDistance.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ARPathDistance.cs",
-              "ToolTip": "E:\\DarsiNavigasi0.1\\Assets\\Scripts\\ARPathDistance.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ARPathDistance.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-09T18:23:46.748Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "NavigationTargetListControl.cs",
               "DocumentMoniker": "E:\\DarsiNavigasi0.1\\Assets\\Samples\\Immersal SDK\\2.2.1\\Core Samples\\Scripts\\Navigation\\Navigation Target List\\NavigationTargetListControl.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Immersal SDK\\2.2.1\\Core Samples\\Scripts\\Navigation\\Navigation Target List\\NavigationTargetListControl.cs",
@@ -108,7 +82,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "NotificationManager.cs",
               "DocumentMoniker": "E:\\DarsiNavigasi0.1\\Assets\\Samples\\Immersal SDK\\2.2.1\\Core Samples\\Scripts\\Util\\NotificationManager.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Immersal SDK\\2.2.1\\Core Samples\\Scripts\\Util\\NotificationManager.cs",
@@ -120,7 +94,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "NavigationSelectionManager.cs",
               "DocumentMoniker": "E:\\DarsiNavigasi0.1\\Assets\\Scripts\\NavigationSelectionManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\NavigationSelectionManager.cs",
@@ -132,19 +106,44 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "NavigationManager.cs",
               "DocumentMoniker": "E:\\DarsiNavigasi0.1\\Assets\\Samples\\Immersal SDK\\2.2.1\\Core Samples\\Scripts\\Navigation\\NavigationManager.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Immersal SDK\\2.2.1\\Core Samples\\Scripts\\Navigation\\NavigationManager.cs",
               "ToolTip": "E:\\DarsiNavigasi0.1\\Assets\\Samples\\Immersal SDK\\2.2.1\\Core Samples\\Scripts\\Navigation\\NavigationManager.cs",
               "RelativeToolTip": "Assets\\Samples\\Immersal SDK\\2.2.1\\Core Samples\\Scripts\\Navigation\\NavigationManager.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAQwEQAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAKUAAAAAAAAAAAAcwKwAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-29T06:10:49.063Z"
+              "WhenOpened": "2026-01-29T06:10:49.063Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
+              "Title": "ARPathDistance.cs",
+              "DocumentMoniker": "E:\\DarsiNavigasi0.1\\Assets\\Scripts\\ARPathDistance.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ARPathDistance.cs",
+              "ToolTip": "E:\\DarsiNavigasi0.1\\Assets\\Scripts\\ARPathDistance.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ARPathDistance.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-09T18:23:46.748Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MiniMapFollow.cs",
+              "DocumentMoniker": "E:\\DarsiNavigasi0.1\\Assets\\Scripts\\MiniMapFollow.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MiniMapFollow.cs",
+              "ToolTip": "E:\\DarsiNavigasi0.1\\Assets\\Scripts\\MiniMapFollow.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MiniMapFollow.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-10T16:36:09.728Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "NavigationGraphManager.cs",
               "DocumentMoniker": "E:\\DarsiNavigasi0.1\\Assets\\Samples\\Immersal SDK\\2.2.1\\Core Samples\\Scripts\\Navigation\\Graph\\NavigationGraphManager.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Immersal SDK\\2.2.1\\Core Samples\\Scripts\\Navigation\\Graph\\NavigationGraphManager.cs",
@@ -156,7 +155,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "IsNavigationTarget.cs",
               "DocumentMoniker": "E:\\DarsiNavigasi0.1\\Assets\\Samples\\Immersal SDK\\2.2.1\\Core Samples\\Scripts\\Navigation\\IsNavigationTarget.cs",
               "RelativeDocumentMoniker": "Assets\\Samples\\Immersal SDK\\2.2.1\\Core Samples\\Scripts\\Navigation\\IsNavigationTarget.cs",
