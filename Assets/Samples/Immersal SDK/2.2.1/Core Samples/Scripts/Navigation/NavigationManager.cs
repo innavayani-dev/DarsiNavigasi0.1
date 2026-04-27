@@ -1,5 +1,5 @@
 ﻿/*===============================================================================
-REVISI TOTAL: FIX UI, AUTO-DETECTION, & DATABASE INTEGRATION
+REVISI TOTAL: FIX UI, AUTO-DETECTION, & DATABASE INTEGRATION + SEARCH FILTER
 Dibuat untuk: Alif (Tugas Akhir Navigasi Indoor PENS - RSI Ahmad Yani)
 ===============================================================================*/
 
@@ -33,7 +33,9 @@ namespace Immersal.Samples.Navigation
         public GameObject listPanel;
         public Transform listContainer;
         public GameObject roomButtonPrefab;
-        public GameObject showNavigationButton; // Pasang tombol utama lu di sini
+        public GameObject showNavigationButton;
+        // 1. TAMBAHKAN VARIABEL SEARCH BAR DI SINI
+        public TMP_InputField searchBar;
 
         [Header("--- TARGET VISUAL (PHANTOM) ---")]
         public GameObject phantomTargetObject;
@@ -44,10 +46,9 @@ namespace Immersal.Samples.Navigation
 
         [Header("--- PARAMETER NAVIGASI ---")]
         [SerializeField] private float m_ArrivedDistanceThreshold = 1.2f;
-        [SerializeField] private float m_pathWidth = 0.35f;
-        [SerializeField] private float m_heightOffset = 0.15f;
+        [SerializeField] private float m_pathWidth = 0.2f;
+        [SerializeField] private float m_heightOffset = 0.5f;
 
-        // --- MODE KOMPATIBILITAS AGAR TIDAK ERROR ---
         [HideInInspector] public bool inEditMode = false;
         public void ToggleEditMode() { inEditMode = !inEditMode; }
         public void InitializeNavigation(NavigationTargetListButton button) { }
@@ -71,31 +72,65 @@ namespace Immersal.Samples.Navigation
         private void Start()
         {
             InitializeNavigationManager();
-            
-            // Safety: Paksa phantom dapet component target
-            if (phantomTargetObject != null) 
+
+            if (phantomTargetObject != null)
                 m_NavigationTarget = phantomTargetObject.GetComponent<IsNavigationTarget>();
 
-            // Sembunyikan panel list diawal
             if (listPanel != null) listPanel.SetActive(false);
-            
-            // Cek apakah tombol utama ada
-            if (showNavigationButton == null) 
+
+            if (showNavigationButton == null)
                 Debug.LogWarning("⚠️ Tombol 'Show Navigation' belum ditarik ke Inspector!");
+
+            // 2. TAMBAHKAN LISTENER AGAR SAAT MENGETIK LANGSUNG FILTER
+            if (searchBar != null)
+            {
+                searchBar.onValueChanged.AddListener(OnSearchChanged);
+            }
         }
 
-        // FUNGSI UTAMA: Dipanggil saat tombol di klik
+        // 3. FUNGSI BARU: LOGIKA FILTER SEARCH BAR (SUDAH DI-FIX)
+        public void OnSearchChanged(string searchText)
+        {
+            if (listContainer == null) return;
+
+            string searchLower = searchText.ToLower();
+
+            foreach (Transform child in listContainer)
+            {
+                // RAHASIANYA DI SINI: Pakai GetComponentsInChildren dengan (true) 
+                // agar sistem tetap bisa membaca text meskipun tombol sedang disembunyikan / SetActive(false)
+                TMP_Text[] semuaTeks = child.GetComponentsInChildren<TMP_Text>(true);
+                bool isMatch = false;
+
+                foreach (TMP_Text txt in semuaTeks)
+                {
+                    if (txt != null && txt.text.ToLower().Contains(searchLower))
+                    {
+                        isMatch = true;
+                        break; // Langsung stop kalau udah nemu kecocokan di tombol ini
+                    }
+                }
+
+                // Tampilkan jika cocok, sembunyikan jika tidak
+                child.gameObject.SetActive(isMatch);
+            }
+        }
+
         public void ToggleNavigationList()
         {
-            if (listPanel == null) {
-                Debug.LogError("❌ listPanel kosong di Inspector! Tarik Scroll View ke sini.");
+            if (listPanel == null)
+            {
+                Debug.LogError("❌ listPanel kosong di Inspector!");
                 return;
             }
 
             bool isShow = !listPanel.activeSelf;
             listPanel.SetActive(isShow);
 
-            if (isShow) {
+            if (isShow)
+            {
+                // Reset teks search bar saat panel dibuka kembali
+                if (searchBar != null) searchBar.text = "";
                 Debug.Log("📡 Membuka daftar ruangan...");
                 StartCoroutine(FetchRoomsFromDatabase());
             }
@@ -103,7 +138,6 @@ namespace Immersal.Samples.Navigation
 
         IEnumerator FetchRoomsFromDatabase()
         {
-            // Bersihkan list lama
             foreach (Transform child in listContainer) Destroy(child.gameObject);
 
             string url = serverURL + "/api/get-room-list";
@@ -156,25 +190,13 @@ namespace Immersal.Samples.Navigation
                             phantomTargetObject.SetActive(true);
                             phantomTargetObject.transform.localPosition = new Vector3(x, y + 0.1f, z);
 
-                            // --- TAMBAHAN BARU: JURUS PAKSA NYALAKAN VISUAL ---
-                            // Ini bakal nyari semua Mesh Renderer di dalam Phantom dan mencentangnya!
                             MeshRenderer[] renderers = phantomTargetObject.GetComponentsInChildren<MeshRenderer>(true);
-                            foreach (MeshRenderer mr in renderers)
-                            {
-                                mr.enabled = true;
-                            }
-                            // -------------------------------------------------
+                            foreach (MeshRenderer mr in renderers) mr.enabled = true;
 
                             m_navigationState = NavigationState.Navigating;
-
-                            // SIMPAN RIWAYAT (Nama diganti ke Alif)
                             SimpanRiwayat("Muchammad Alif", "Lobby Utama", data.room_name, data.coordinates);
                             UpdateNavigationUI(m_navigationState);
                         }
-
-                        // SIMPAN RIWAYAT (Nama diganti ke Alif)
-                        SimpanRiwayat("Muchammad Alif", "Lobby Utama", data.room_name, data.coordinates);
-                        UpdateNavigationUI(m_navigationState);
                     }
                 }
             }
@@ -205,15 +227,12 @@ namespace Immersal.Samples.Navigation
         private void Update()
         {
             if (m_managerInitialized && m_navigationState == NavigationState.Navigating)
-            {
                 DrawARPath();
-            }
         }
 
         void DrawARPath()
         {
             if (m_playerTransform == null || m_NavigationTarget == null) return;
-
             Vector3 start = m_playerTransform.position;
             Vector3 target = m_NavigationTarget.transform.position;
 
@@ -231,9 +250,8 @@ namespace Immersal.Samples.Navigation
             {
                 List<Vector3> corners = new List<Vector3>();
                 foreach (var c in path.corners)
-                {
                     corners.Add(UnityToXRSpace(m_XRSpace.transform, m_XRSpace.InitialPose, c + new Vector3(0, m_heightOffset, 0)));
-                }
+
                 m_navigationPath.GeneratePath(corners, m_XRSpace.transform.up);
                 m_navigationPath.pathWidth = m_pathWidth;
             }
@@ -243,7 +261,6 @@ namespace Immersal.Samples.Navigation
         {
             m_navigationState = NavigationState.NotNavigating;
             if (phantomTargetObject != null) phantomTargetObject.SetActive(false);
-
             UpdateNavigationUI(m_navigationState);
         }
 
@@ -256,13 +273,7 @@ namespace Immersal.Samples.Navigation
         private void InitializeNavigationManager()
         {
             if (m_XRSpace == null) m_XRSpace = FindObjectOfType<XRSpace>();
-            
-            // WAJIB: Mencari kamera dengan tag MainCamera
-            if (Camera.main != null)
-                m_playerTransform = Camera.main.transform;
-            else
-                Debug.LogError("❌ Objek 'Main Camera' tidak ditemukan! Pastikan Tag-nya benar.");
-
+            if (Camera.main != null) m_playerTransform = Camera.main.transform;
             if (m_navigationPathPrefab != null)
             {
                 m_navigationPathObject = Instantiate(m_navigationPathPrefab);
