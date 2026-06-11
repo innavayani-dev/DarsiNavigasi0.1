@@ -8,19 +8,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/asset/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SplashScene.unity
     guid: 25aedd5ad399c405c8ce3565b6332c57
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/0_Login.unity
     guid: 34483c18d485a441781df78c6d6441e9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/1_Register.unity
     guid: 0917f7ab42ea643ce8af553327232bd0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/2_ScannerCamera.unity
     guid: 85e15e94b86d4484dbe5f54d30a48482
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/3_NavList.unity
     guid: 1fd600eba1a404d42a873f6eec677414
   - enabled: 1

@@ -1,4 +1,4 @@
-﻿/*===============================================================================
+/*===============================================================================
 REVISI TOTAL: FIX UI, AUTO-DETECTION, & DATABASE INTEGRATION + SEARCH FILTER
 Dibuat untuk: Alif (Tugas Akhir Navigasi Indoor PENS - RSI Ahmad Yani)
 ===============================================================================*/
@@ -242,17 +242,51 @@ namespace Immersal.Samples.Navigation
                 return;
             }
 
-            Vector3 s = XRSpaceToUnity(m_XRSpace.transform, m_XRSpace.InitialPose, start);
-            Vector3 t = XRSpaceToUnity(m_XRSpace.transform, m_XRSpace.InitialPose, target);
+            List<Vector3> corners = new List<Vector3>();
 
-            NavMeshPath path = new NavMeshPath();
-            if (NavMesh.CalculatePath(s, t, NavMesh.AllAreas, path))
+            // Coba pakai algoritma A* dari NavigationGraphManager jika ada waypoint
+            if (NavigationGraphManager.Instance != null)
             {
-                List<Vector3> corners = new List<Vector3>();
-                foreach (var c in path.corners)
-                    corners.Add(UnityToXRSpace(m_XRSpace.transform, m_XRSpace.InitialPose, c + new Vector3(0, m_heightOffset, 0)));
+                List<Vector3> aStarPath = NavigationGraphManager.Instance.FindPath(start, target);
+                if (aStarPath != null && aStarPath.Count > 1)
+                {
+                    foreach (var c in aStarPath)
+                    {
+                        // aStarPath menggunakan koordinat global (World Space), tambahkan heightOffset sesuai orientasi XRSpace
+                        corners.Add(c + m_XRSpace.transform.up * m_heightOffset);
+                    }
+                }
+            }
 
-                m_navigationPath.GeneratePath(corners, m_XRSpace.transform.up);
+            // Fallback ke NavMesh jika A* tidak menemukan jalur atau tidak digunakan
+            if (corners.Count == 0)
+            {
+                Vector3 s = XRSpaceToUnity(m_XRSpace.transform, m_XRSpace.InitialPose, start);
+                Vector3 t = XRSpaceToUnity(m_XRSpace.transform, m_XRSpace.InitialPose, target);
+
+                NavMeshPath path = new NavMeshPath();
+                if (NavMesh.CalculatePath(s, t, NavMesh.AllAreas, path))
+                {
+                    foreach (var c in path.corners)
+                    {
+                        corners.Add(UnityToXRSpace(m_XRSpace.transform, m_XRSpace.InitialPose, c + new Vector3(0, m_heightOffset, 0)));
+                    }
+                }
+            }
+
+            // Fallback terakhir: Garis lurus ke tujuan jika NavMesh dan A* gagal (sehingga AR Path selalu muncul)
+            if (corners.Count < 2)
+            {
+                corners.Clear();
+                Vector3 upDir = m_XRSpace != null ? m_XRSpace.transform.up : Vector3.up;
+                corners.Add(start + upDir * m_heightOffset);
+                corners.Add(target + upDir * m_heightOffset);
+            }
+
+            if (corners.Count > 0)
+            {
+                Vector3 upDir = m_XRSpace != null ? m_XRSpace.transform.up : Vector3.up;
+                m_navigationPath.GeneratePath(corners, upDir);
                 m_navigationPath.pathWidth = m_pathWidth;
             }
         }

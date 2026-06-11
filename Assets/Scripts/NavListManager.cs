@@ -85,7 +85,34 @@ public class NavListManager : MonoBehaviour
 
     public void OnTabClicked(string tabName)
     {
-        if (tabName == "Semua" && mainScrollRect != null)
+        string filter = tabName.ToLower();
+
+        for (int i = 0; i < listItems.Count; i++)
+        {
+            if (tabName == "Semua")
+            {
+                listItems[i].SetActive(true);
+            }
+            else
+            {
+                // Cari kompenen "Subtitle" yang menyimpan informasi lantai
+                Transform subTransform = listItems[i].transform.Find("Subtitle");
+                if (subTransform != null)
+                {
+                    TextMeshProUGUI tmp = subTransform.GetComponent<TextMeshProUGUI>();
+                    if (tmp != null)
+                    {
+                        // "Lantai 1" akan cocok dengan "Lantai 1" di subtitle
+                        bool match = tmp.text.ToLower().Contains(filter);
+                        listItems[i].SetActive(match);
+                        continue;
+                    }
+                }
+                listItems[i].SetActive(false); // Sembunyikan jika tidak cocok
+            }
+        }
+
+        if (mainScrollRect != null)
         {
             mainScrollRect.verticalNormalizedPosition = 1f; // Scrolldown/reset ke posisi paling atas
         }

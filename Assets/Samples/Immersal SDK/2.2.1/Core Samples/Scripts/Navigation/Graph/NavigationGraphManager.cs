@@ -1,4 +1,4 @@
-﻿/*===============================================================================
+/*===============================================================================
 Copyright (C) 2024 Immersal - Part of Hexagon. All Rights Reserved.
 
 This file is part of the Immersal SDK.
@@ -444,8 +444,19 @@ namespace Immersal.Samples.Navigation
         {
             List<Vector3> pathPositions = new List<Vector3>();
             List<Node> openList = new List<Node>();
-            List<Node> closedList = new List<Node>();
+            HashSet<Node> closedList = new HashSet<Node>();
             
+            Dictionary<Node, float> gCost = new Dictionary<Node, float>();
+            Dictionary<Node, float> fCost = new Dictionary<Node, float>();
+
+            foreach(Node node in graph.Keys) 
+            {
+                gCost[node] = Mathf.Infinity;
+                fCost[node] = Mathf.Infinity;
+            }
+            gCost[startNode] = 0;
+            fCost[startNode] = Vector3.Distance(startNode.position, endNode.position);
+
             openList.Add(startNode);
 
             while (openList.Count > 0)
@@ -453,35 +464,42 @@ namespace Immersal.Samples.Navigation
                 Node currNode = openList[0];
                 for (int i = 1; i < openList.Count; i++)
                 {
-                    if (openList[i].Cost < currNode.Cost)
+                    if (fCost.ContainsKey(openList[i]) && fCost.ContainsKey(currNode))
                     {
-                        currNode = openList[i];
+                        if (fCost[openList[i]] < fCost[currNode])
+                        {
+                            currNode = openList[i];
+                        }
                     }
+                }
+
+                if (currNode == endNode)
+                {
+                    return NodesToPathPositions(startNode, endNode);
                 }
 
                 openList.Remove(currNode);
                 closedList.Add(currNode);
 
-                if (currNode == endNode)
-                {
-                    pathPositions = NodesToPathPositions(startNode, endNode);
-                    return pathPositions;
-                }
+                if (!graph.ContainsKey(currNode)) continue;
 
                 foreach (Node n in graph[currNode])
                 {
-                    if (!closedList.Contains(n))
-                    {
-                        float totalCost = currNode.Cost + n.Cost;
-                        if (totalCost < n.Cost || !openList.Contains(n))
-                        {
-                            n.Cost = totalCost;
-                            n.Parent = currNode;
+                    if (closedList.Contains(n)) continue;
 
-                            if (!openList.Contains(n))
-                            {
-                                openList.Add(n);
-                            }
+                    float tentativeGCost = gCost.ContainsKey(currNode) ? gCost[currNode] + Vector3.Distance(currNode.position, n.position) : Mathf.Infinity;
+
+                    if (!gCost.ContainsKey(n)) gCost[n] = Mathf.Infinity;
+
+                    if (tentativeGCost < gCost[n])
+                    {
+                        n.Parent = currNode;
+                        gCost[n] = tentativeGCost;
+                        fCost[n] = gCost[n] + Vector3.Distance(n.position, endNode.position);
+
+                        if (!openList.Contains(n))
+                        {
+                            openList.Add(n);
                         }
                     }
                 }
