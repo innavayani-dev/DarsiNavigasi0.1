@@ -16,33 +16,48 @@ public class SceneFlowManager : MonoBehaviour
 
     public void GoToLogin()
     {
-        StartCoroutine(FadeAndLoad("0_Login"));
+        StartCoroutine(FadeAndLoad("1_Login"));
     }
 
     public void GoToRegister()
     {
-        StartCoroutine(FadeAndLoad("1_Register"));
+        StartCoroutine(FadeAndLoad("2_regis"));
     }
 
     public void GoToScanner()
     {
         PlayerPrefs.SetString("PrevScene", SceneManager.GetActiveScene().name);
-        StartCoroutine(FadeAndLoad("2_ScannerCamera"));
+        StartCoroutine(FadeAndLoad("4_Scan Screen"));
     }
 
     public void GoToNavList()
     {
-        StartCoroutine(FadeAndLoad("3_NavList"));
+        StartCoroutine(FadeAndLoad("3_halaman utama"));
     }
 
     public void GoBack()
     {
-        string prevScene = PlayerPrefs.GetString("PrevScene", "0_Login");
+        string prevScene = PlayerPrefs.GetString("PrevScene", "1_Login");
         StartCoroutine(FadeAndLoad(prevScene));
     }
 
     public void GoBackToNavList()
     {
-        StartCoroutine(FadeAndLoad("3_NavList"));
+        StartCoroutine(FadeAndLoad("3_halaman utama"));
+    }
+
+    public void GoToHalamanUtama()
+    {
+        StartCoroutine(FadeAndLoad("3_halaman utama"));
+    }
+
+    public void GoToARNavigasi()
+    {
+        StartCoroutine(FadeAndLoad("6_AR Navigasi"));
+    }
+
+    public void GoToTentangAplikasi()
+    {
+        StartCoroutine(FadeAndLoad("5_Tentang Aplikasi"));
     }
 }

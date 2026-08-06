@@ -27,6 +27,12 @@ public class NavListManager : MonoBehaviour
         if (searchField != null)
         {
             searchField.onValueChanged.AddListener(OnSearchValueChanged);
+            // CEGAH TUMPANG TINDIH: Ketika bar pencarian diklik/fokus, tutup popup filter
+            searchField.onSelect.AddListener((_) => {
+                if (filterPopup != null && filterPopup.activeSelf) filterPopup.SetActive(false);
+                GameObject scrollView = GetScrollViewObject();
+                if (scrollView != null) scrollView.SetActive(true);
+            });
         }
 
         // Ensure popup is hidden on start
@@ -34,6 +40,16 @@ public class NavListManager : MonoBehaviour
         {
             filterPopup.SetActive(false);
         }
+    }
+
+    private GameObject GetScrollViewObject()
+    {
+        if (mainScrollRect != null) return mainScrollRect.gameObject;
+        if (contentParent != null && contentParent.parent != null && contentParent.parent.parent != null)
+        {
+            return contentParent.parent.parent.gameObject;
+        }
+        return null;
     }
 
     public void OnSearchValueChanged(string query)
@@ -70,21 +86,34 @@ public class NavListManager : MonoBehaviour
         {
             bool isActive = filterPopup.activeSelf;
             filterPopup.SetActive(!isActive);
+            GameObject scrollView = GetScrollViewObject();
             if (!isActive)
             {
                 // Ensure it draws on top
                 filterPopup.transform.SetAsLastSibling();
+                // CEGAH TUMPANG TINDIH: Saat popup filter terbuka, sembunyikan list ruangan
+                if (scrollView != null) scrollView.SetActive(false);
+            }
+            else
+            {
+                // Saat popup filter ditutup, munculkan kembali list ruangan
+                if (scrollView != null) scrollView.SetActive(true);
             }
         }
     }
 
     public void LoadScannerScene()
     {
-        SceneManager.LoadScene("2_ScannerCamera");
+        SceneManager.LoadScene("4_Scan Screen");
     }
 
     public void OnTabClicked(string tabName)
     {
+        // Tutup popup filter & munculkan list ruangan yang sudah difilter
+        if (filterPopup != null) filterPopup.SetActive(false);
+        GameObject scrollView = GetScrollViewObject();
+        if (scrollView != null) scrollView.SetActive(true);
+
         string filter = tabName.ToLower();
 
         for (int i = 0; i < listItems.Count; i++)

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,8 +29,12 @@ namespace Immersal.Samples.Navigation
                 // loops through all targets in each category
                 foreach (GameObject go in entry.Value)
                 {
+                    if (go == null) continue;
+                    if (go.name.IndexOf("Phantom", System.StringComparison.OrdinalIgnoreCase) >= 0) continue;
                     IsNavigationTarget isNavigationTarget = go.GetComponent<IsNavigationTarget>();
+                    if (isNavigationTarget == null) continue;
                     string targetName = isNavigationTarget.targetName;
+                    if (!string.IsNullOrEmpty(targetName) && targetName.IndexOf("Phantom", System.StringComparison.OrdinalIgnoreCase) >= 0) continue;
                     Sprite icon = isNavigationTarget.icon;
 
                     GameObject button = Instantiate(m_ButtonTemplate, m_ContentParent);
@@ -68,16 +72,31 @@ namespace Immersal.Samples.Navigation
         // Fungsi baru untuk mengatur siapa yang boleh muncul di layar AR
         private void HandleTargetVisibility(string selectedName)
         {
-            // Cari semua script IsNavigationTarget yang ada di scene
-            IsNavigationTarget[] allTargets = FindObjectsOfType<IsNavigationTarget>();
+            // Cari semua script IsNavigationTarget yang ada di scene (termasuk yang inactive)
+            IsNavigationTarget[] allTargets = FindObjectsOfType<IsNavigationTarget>(true);
 
             foreach (var target in allTargets)
             {
-                // Cek apakah namanya sesuai dengan tombol yang diklik user
                 bool isChosenOne = (target.targetName == selectedName);
-
-                // Panggil fungsi SetVisible yang kita buat di script sebelumnya
                 target.SetVisible(isChosenOne);
+                if (isChosenOne)
+                {
+                    DoorbellARPopup.Instance.CheckAndShow(selectedName, target.transform);
+                }
+            }
+
+            // TUTUP OTOMATIS PANEL LIST RUANGAN
+            NavigationManager navMgr = Object.FindObjectOfType<NavigationManager>();
+            if (navMgr != null)
+            {
+                navMgr.CloseNavigationList();
+            }
+
+            // Sebagai pengaman ganda jika NavigationTargetListControl berada di panel tersendiri:
+            gameObject.SetActive(false);
+            if (transform.parent != null && (transform.parent.name.Contains("Panel") || transform.parent.name.Contains("List") || transform.parent.name.Contains("Scroll") || transform.parent.name.Contains("Dropdown")))
+            {
+                transform.parent.gameObject.SetActive(false);
             }
         }
 

@@ -1,0 +1,445 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\SceneTransitionButton.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\SceneTransitionButton.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\SceneTransitionButton.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\SceneTransitionButton.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\SafeArea.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\SafeArea.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\SafeArea.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\SafeArea.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\PerformanceOptimizer.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\PerformanceOptimizer.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\PerformanceOptimizer.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\PerformanceOptimizer.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\NavigationSearchBar.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\NavigationSearchBar.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\NavigationSearchBar.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\NavigationSearchBar.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\MinimapFloorManager.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\MinimapFloorManager.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\MinimapFloorManager.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\MinimapFloorManager.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\InitialPositionManager.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\InitialPositionManager.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\InitialPositionManager.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\InitialPositionManager.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\FadeOutOnStart.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\FadeOutOnStart.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\FadeOutOnStart.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\FadeOutOnStart.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\DoorbellARPopup.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\DoorbellARPopup.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\DoorbellARPopup.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\DoorbellARPopup.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\DebounceSearch.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\DebounceSearch.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\DebounceSearch.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\DebounceSearch.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\CircularMiniMap.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\CircularMiniMap.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\CircularMiniMap.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\CircularMiniMap.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\AuthManager.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\AuthManager.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\AuthManager.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\AuthManager.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\ArrivalNotificationUI.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\ArrivalNotificationUI.cs.meta||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\ArrivalNotificationUI.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\ArrivalNotificationUI.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\ActiveNavigationUI.cs||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\ActiveNavigationUI.cs||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SceneTransitionButton.cs.meta",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\SceneTransitionButton.cs.meta",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SceneTransitionButton.cs.meta",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\SceneTransitionButton.cs.meta",
+              "RelativeToolTip": "Assets\\Scripts\\SceneTransitionButton.cs.meta",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-01T10:32:03.415Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SceneTransitionButton.cs",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\SceneTransitionButton.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SceneTransitionButton.cs",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\SceneTransitionButton.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SceneTransitionButton.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAkAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T10:31:54.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SafeArea.cs.meta",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\SafeArea.cs.meta",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SafeArea.cs.meta",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\SafeArea.cs.meta",
+              "RelativeToolTip": "Assets\\Scripts\\SafeArea.cs.meta",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-01T10:31:21.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SafeArea.cs",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\SafeArea.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SafeArea.cs",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\SafeArea.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SafeArea.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAgwB0AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T10:31:14.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PerformanceOptimizer.cs.meta",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\PerformanceOptimizer.cs.meta",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PerformanceOptimizer.cs.meta",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\PerformanceOptimizer.cs.meta",
+              "RelativeToolTip": "Assets\\Scripts\\PerformanceOptimizer.cs.meta",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-01T10:31:02.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PerformanceOptimizer.cs",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\PerformanceOptimizer.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PerformanceOptimizer.cs",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\PerformanceOptimizer.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PerformanceOptimizer.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAABYAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T10:30:47.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "NavigationSearchBar.cs.meta",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\NavigationSearchBar.cs.meta",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\NavigationSearchBar.cs.meta",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\NavigationSearchBar.cs.meta",
+              "RelativeToolTip": "Assets\\Scripts\\NavigationSearchBar.cs.meta",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-01T10:30:14.367Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "NavigationSearchBar.cs",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\NavigationSearchBar.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\NavigationSearchBar.cs",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\NavigationSearchBar.cs",
+              "RelativeToolTip": "Assets\\Scripts\\NavigationSearchBar.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAgwDEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T10:30:00.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MinimapFloorManager.cs.meta",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\MinimapFloorManager.cs.meta",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MinimapFloorManager.cs.meta",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\MinimapFloorManager.cs.meta",
+              "RelativeToolTip": "Assets\\Scripts\\MinimapFloorManager.cs.meta",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-01T10:29:38.72Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MinimapFloorManager.cs",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\MinimapFloorManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MinimapFloorManager.cs",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\MinimapFloorManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MinimapFloorManager.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAABIAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T10:29:25.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "InitialPositionManager.cs.meta",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\InitialPositionManager.cs.meta",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\InitialPositionManager.cs.meta",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\InitialPositionManager.cs.meta",
+              "RelativeToolTip": "Assets\\Scripts\\InitialPositionManager.cs.meta",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-01T10:29:22.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "InitialPositionManager.cs",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\InitialPositionManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\InitialPositionManager.cs",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\InitialPositionManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\InitialPositionManager.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T10:29:00.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "FadeOutOnStart.cs.meta",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\FadeOutOnStart.cs.meta",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\FadeOutOnStart.cs.meta",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\FadeOutOnStart.cs.meta",
+              "RelativeToolTip": "Assets\\Scripts\\FadeOutOnStart.cs.meta",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-01T10:28:57.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "FadeOutOnStart.cs",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\FadeOutOnStart.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\FadeOutOnStart.cs",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\FadeOutOnStart.cs",
+              "RelativeToolTip": "Assets\\Scripts\\FadeOutOnStart.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAAACgAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T10:28:39.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DoorbellARPopup.cs.meta",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\DoorbellARPopup.cs.meta",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DoorbellARPopup.cs.meta",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\DoorbellARPopup.cs.meta",
+              "RelativeToolTip": "Assets\\Scripts\\DoorbellARPopup.cs.meta",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-01T10:28:37.701Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DoorbellARPopup.cs",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\DoorbellARPopup.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DoorbellARPopup.cs",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\DoorbellARPopup.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DoorbellARPopup.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAgwF8AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T10:28:28.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DebounceSearch.cs.meta",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\DebounceSearch.cs.meta",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DebounceSearch.cs.meta",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\DebounceSearch.cs.meta",
+              "RelativeToolTip": "Assets\\Scripts\\DebounceSearch.cs.meta",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-01T10:28:25.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "DebounceSearch.cs",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\DebounceSearch.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DebounceSearch.cs",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\DebounceSearch.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DebounceSearch.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T10:28:12.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "CircularMiniMap.cs.meta",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\CircularMiniMap.cs.meta",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CircularMiniMap.cs.meta",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\CircularMiniMap.cs.meta",
+              "RelativeToolTip": "Assets\\Scripts\\CircularMiniMap.cs.meta",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-01T10:28:09.236Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "CircularMiniMap.cs",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\CircularMiniMap.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CircularMiniMap.cs",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\CircularMiniMap.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CircularMiniMap.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAgwGoAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T10:27:39.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "AuthManager.cs.meta",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\AuthManager.cs.meta",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AuthManager.cs.meta",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\AuthManager.cs.meta",
+              "RelativeToolTip": "Assets\\Scripts\\AuthManager.cs.meta",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-01T10:27:36.057Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ArrivalNotificationUI.cs.meta",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\ArrivalNotificationUI.cs.meta",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ArrivalNotificationUI.cs.meta",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\ArrivalNotificationUI.cs.meta",
+              "RelativeToolTip": "Assets\\Scripts\\ArrivalNotificationUI.cs.meta",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-01T10:27:29.675Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ArrivalNotificationUI.cs",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\ArrivalNotificationUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ArrivalNotificationUI.cs",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\ArrivalNotificationUI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ArrivalNotificationUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T10:26:24.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ActiveNavigationUI.cs",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\ActiveNavigationUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ActiveNavigationUI.cs",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\ActiveNavigationUI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ActiveNavigationUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T10:25:25.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AuthManager.cs",
+              "DocumentMoniker": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\AuthManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AuthManager.cs",
+              "ToolTip": "G:\\Billbilly\\DarsiNavigasi0.1fixxxxx\\Assets\\Scripts\\AuthManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AuthManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-24T10:10:59.253Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

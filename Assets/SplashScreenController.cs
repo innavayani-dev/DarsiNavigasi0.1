@@ -5,23 +5,41 @@ using System.Collections;
 
 public class SplashScreenController : MonoBehaviour
 {
-    public float delayTime = 3f;
-    public string nextScene = "0_Login";
+    public float delayTime = 5f;
+    public string nextScene = "1_Login";
     public Image fadeOverlay;
-    public float fadeDuration = 1.0f;
+    public float fadeDuration = 0.3f;
+
+    void Awake()
+    {
+        if (fadeOverlay != null) fadeOverlay.color = new Color(0, 0, 0, 1); // Start black for fade in immediately
+    }
 
     void Start()
     {
-        if (fadeOverlay != null) fadeOverlay.color = new Color(0, 0, 0, 0);
         StartCoroutine(LoadingToLogin());
     }
 
     IEnumerator LoadingToLogin()
     {
+        if (fadeOverlay != null)
+        {
+            // Fade In
+            float timer = fadeDuration;
+            while (timer > 0)
+            {
+                timer -= Time.deltaTime;
+                fadeOverlay.color = new Color(0, 0, 0, timer / fadeDuration);
+                yield return null;
+            }
+            fadeOverlay.color = new Color(0, 0, 0, 0);
+        }
+
         yield return new WaitForSeconds(delayTime);
 
         if (fadeOverlay != null)
         {
+            // Fade Out
             float timer = 0;
             while (timer < fadeDuration)
             {

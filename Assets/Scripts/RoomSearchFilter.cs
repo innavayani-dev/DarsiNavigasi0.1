@@ -12,41 +12,52 @@ public class RoomSearchFilter : MonoBehaviour
 
     void Start()
     {
-        if (searchBar != null)
+        // Hapus fungsi ganda karena NavigationManager.cs sudah punya fungsi search yang lebih sempurna
+        // dan terhubung langsung dengan database.
+        
+        // AUTO-HOOKUP: Cari semua objek bernama "Filter Popup" (termasuk yang disembunyikan/inactive)
+        Transform filterPopup = null;
+        foreach (Transform t in Resources.FindObjectsOfTypeAll<Transform>())
         {
-            searchBar.onValueChanged.AddListener(FilterRuangan);
-        }
-    }
-
-    public void FilterRuangan(string kataKunci)
-    {
-        // Auto-open panel pas ngetik
-        if (targetScrollView != null && kataKunci.Length > 0)
-        {
-            targetScrollView.SetActive(true);
-        }
-
-        kataKunci = kataKunci.ToLower();
-
-        // Cek satu-satu tombol yang ada
-        foreach (Transform tombolRuangan in contentContainer)
-        {
-            // RAHASIANYA DI SINI: Tambahin (true) biar bisa ngebaca teks dari tombol yang lagi ngilang!
-            // Kita juga pakai GetComponentsInChildren (pakai 's') buat ngebaca semua teks di tombol (termasuk icon)
-            TMP_Text[] semuaTeks = tombolRuangan.GetComponentsInChildren<TMP_Text>(true);
-            bool adaYangCocok = false;
-
-            foreach (TMP_Text teks in semuaTeks)
+            if (t.name == "Filter Popup" && t.gameObject.scene.isLoaded)
             {
-                if (teks.text.ToLower().Contains(kataKunci))
+                filterPopup = t;
+                break;
+            }
+        }
+
+        if (filterPopup != null)
+        {
+            FilterUI filterUI = Object.FindObjectOfType<FilterUI>();
+            if (filterUI == null) return;
+
+            // Ambil semua tombol yang ada di dalam Filter Popup
+            UnityEngine.UI.Button[] tombolFilter = filterPopup.GetComponentsInChildren<UnityEngine.UI.Button>(true);
+            foreach (var btn in tombolFilter)
+            {
+                TMP_Text teks = btn.GetComponentInChildren<TMP_Text>(true);
+                if (teks != null)
                 {
-                    adaYangCocok = true;
-                    break; // Kalau nemu 1 kecocokan, langsung stop nyari di tombol ini
+                    string namaTombol = teks.text.ToLower();
+                    
+                    // Bersihkan listener lama
+                    btn.onClick.RemoveAllListeners();
+
+                    // Pasangkan fungsi langsung ke FilterUI bawaan sistem
+                    if (namaTombol.Contains("semua"))
+                    {
+                        btn.onClick.AddListener(() => filterUI.PilihOpsi("Semua"));
+                    }
+                    else if (namaTombol.Contains("graha"))
+                    {
+                        btn.onClick.AddListener(() => filterUI.PilihOpsi("Graha"));
+                    }
+                    else if (namaTombol.Contains("tower"))
+                    {
+                        btn.onClick.AddListener(() => filterUI.PilihOpsi("Tower"));
+                    }
                 }
             }
-
-            // Tampilkan tombol kalau ada teks yang cocok, sembunyikan kalau nggak ada
-            tombolRuangan.gameObject.SetActive(adaYangCocok);
         }
     }
 }

@@ -43,7 +43,15 @@ public class WASDSimulator : MonoBehaviour
         // Kunci sumbu Y agar tidak terbang saat berjalan sambil melihat ke atas
         moveDirection.y = 0f;
         
-        transform.position += moveDirection.normalized * moveSpeed * Time.deltaTime;
+        // Gerakan Vertikal (Naik = E, Turun = Q)
+        float verticalMove = 0f;
+        if (Input.GetKey(KeyCode.E)) verticalMove = 1f;
+        if (Input.GetKey(KeyCode.Q)) verticalMove = -1f;
+
+        Vector3 finalMove = moveDirection.normalized * moveSpeed;
+        finalMove.y = verticalMove * moveSpeed;
+
+        transform.position += finalMove * Time.deltaTime;
 
         // Rotasi Kamera menggunakan Klik Kanan Mouse (Melihat 360 derajat)
         if (Input.GetMouseButton(1))

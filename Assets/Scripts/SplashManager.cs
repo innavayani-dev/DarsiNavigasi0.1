@@ -8,7 +8,7 @@ public class SplashManager : MonoBehaviour
     public Image fadeOverlay;
     public float fadeDuration = 1.0f;
     public float waitTime = 2.0f;
-    public string nextSceneName = "0_Login";
+    public string nextSceneName = "1_Login";
 
     void Start()
     {

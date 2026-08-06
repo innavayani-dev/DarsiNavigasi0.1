@@ -1,4 +1,4 @@
-﻿/*===============================================================================
+/*===============================================================================
 Copyright (C) 2024 Immersal - Part of Hexagon. All Rights Reserved.
 
 This file is part of the Immersal SDK.
@@ -53,7 +53,7 @@ namespace Immersal.Samples.Navigation
         override public void OnPointerClick(PointerEventData pointerEventData)
         {
             NavigationManager.Instance.InitializeNavigation(this);
-            NavigationManager.Instance.ToggleTargetsList();
+            NavigationManager.Instance.CloseNavigationList();
             base.OnPointerClick(pointerEventData);
         }
     }

@@ -105,6 +105,12 @@ namespace Immersal.Samples.Navigation
                 return instance;
             }
         }
+
+        public static bool HasInstance
+        {
+            get { return instance != null; }
+        }
+
         void Awake()
         {
             if (instance == null)

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Immersal.Samples.Navigation
@@ -56,14 +56,18 @@ namespace Immersal.Samples.Navigation
         // Fungsi baru untuk kontrol muncul/hilang
         public void SetVisible(bool visible)
         {
-            if (m_renderers == null) return;
+            // Nyalakan/matikan seluruh child GameObject visual di bawah target ini
+            foreach (Transform child in transform)
+            {
+                child.gameObject.SetActive(visible);
+            }
 
-            foreach (var r in m_renderers)
+            Renderer[] allRenderers = GetComponentsInChildren<Renderer>(true);
+            foreach (var r in allRenderers)
             {
                 r.enabled = visible;
             }
 
-            // Opsional: Matikan collider agar tidak bisa diklik kalau sedang tersembunyi
             if (m_collider != null) m_collider.enabled = visible;
         }
 
@@ -71,6 +75,13 @@ namespace Immersal.Samples.Navigation
         {
             if (m_collider == null)
                 m_collider = GetComponent<Collider>() ?? GetComponentInChildren<Collider>();
+
+            // Cek agar objek Phantom tidak pernah masuk ke dalam daftar target navigasi
+            if (gameObject.name.IndexOf("Phantom", System.StringComparison.OrdinalIgnoreCase) >= 0 ||
+                (!string.IsNullOrEmpty(targetName) && targetName.IndexOf("Phantom", System.StringComparison.OrdinalIgnoreCase) >= 0))
+            {
+                return;
+            }
 
             if (!NavigationTargets.NavigationTargetsDict.ContainsKey(navigationCategory))
                 NavigationTargets.NavigationTargetsDict[navigationCategory] = new List<GameObject>();
@@ -87,7 +98,10 @@ namespace Immersal.Samples.Navigation
 
         private void OnDestroy()
         {
-            NavigationGraphManager.Instance?.RemoveTarget(this);
+            if (NavigationGraphManager.HasInstance)
+            {
+                NavigationGraphManager.Instance.RemoveTarget(this);
+            }
         }
 
 #if UNITY_EDITOR
