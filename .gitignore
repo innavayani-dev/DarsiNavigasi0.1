@@ -13,3 +13,21 @@
 *.pidb
 *.booproj
 *.svntmp
+
+# Editor / IDE / tool artifacts
+.vs/
+.vscode/
+.idea/
+*.iml
+.plastic/
+
+# Build and package artifacts
+*.apk
+*.aab
+*.ipa
+*.unitypackage
+*.log
+
+# Unity generated debug/build output
+DarsiNavigasi_BurstDebugInformation_DoNotShip/
+compile_errors.txt
