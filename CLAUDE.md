@@ -91,8 +91,12 @@ Jangan bangun apa pun yang mengunci arah teknis sampai dua hal ini terjawab
 4. Temuan baru yang terverifikasi → tambahkan ke `docs/KNOWN-ISSUES.md` dengan bukti
    file:baris, jangan cuma disebut di chat.
 
-## Jangan commit
+## Jangan commit / push & Aturan Identitas AI
 
-- APK / AAB / hasil build (sudah ada 425 MB di riwayat — jangan tambah)
-- Developer token, kredensial backend, apa pun yang rahasia
-- `Library/`, `Temp/`, `Logs/`
+- **Jangan pernah push**: AI DILARANG KERAS melakukan `git push` ke remote repo. Push hanya dilakukan manual oleh pemilik project (Bagus).
+- **Jangan pernah masuk collaborator / co-author**: Dilarang mencantumkan nama/identitas AI (Antigravity, Gemini, Claude, Co-authored-by, dll.) pada git history, commit, atau PR.
+- **Commit butuh persetujuan (consent)**: Jangan commit tanpa persetujuan eksplisit dari pemilik project (Bagus).
+- APK / AAB / hasil build (sudah ada 425 MB di riwayat — jangan tambah).
+- Developer token, kredensial backend, apa pun yang rahasia.
+- `Library/`, `Temp/`, `Logs/`.
+
