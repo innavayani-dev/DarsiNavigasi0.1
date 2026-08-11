@@ -199,7 +199,7 @@ berisiko memutus hal lain di saat sistem belum punya pengujian apa pun.
 **Yang dilakukan sebagai gantinya:**
 1. Cacatnya didokumentasikan lengkap dengan bukti di **KI-02**
 2. Prosedur manual dibuat supaya penambahan ruangan berikutnya tidak menambah
-   penyimpangan → `.claude/skills/tambah-ruangan-navigasi/`
+   penyimpangan → `.agents/skills/tambah-ruangan-navigasi/`
 
 **Catatan jujur:** ini meredakan gejala, bukan menyembuhkan penyebab. Selama nama disalin
 manual, salinannya akan melenceng lagi. Perbaikan yang benar adalah menurunkan kategori

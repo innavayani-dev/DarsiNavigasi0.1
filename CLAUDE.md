@@ -30,7 +30,7 @@ biasa.
 - **Ada tiga ruang koordinat** — world, XRSpace local, NavMesh. Transform `XRSpace`
   berubah tiap VPS localize. Kode yang lupa konversi menghasilkan angka salah (KI-04).
 - **Duplikasi nama ruangan sengaja DITUNDA** (ADR-N002), bukan terlewat. Kalau menyentuh
-  ruangan, ikuti `.claude/skills/tambah-ruangan-navigasi/`.
+  ruangan, ikuti `.agents/skills/tambah-ruangan-navigasi/`.
 - **Belum ada instrumentasi apa pun** (KI-05). Jangan pernah menyatakan angka performa —
   tidak ada yang pernah diukur.
 

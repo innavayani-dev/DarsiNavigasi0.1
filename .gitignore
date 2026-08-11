@@ -18,6 +18,7 @@
 .vs/
 .vscode/
 .idea/
+.claude/
 *.iml
 .plastic/
 
@@ -28,6 +29,12 @@
 *.unitypackage
 *.log
 
+# Secret application configs
+Assets/Resources/appconfig.json
+Assets/Resources/appconfig.json.meta
+Assets/StreamingAssets/appconfig.json
+Assets/StreamingAssets/appconfig.json.meta
+
 # Unity generated debug/build output
 DarsiNavigasi_BurstDebugInformation_DoNotShip/
-compile_errors.txt
+compile_errors.txt

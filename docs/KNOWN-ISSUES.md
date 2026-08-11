@@ -69,7 +69,7 @@ gedung sebaiknya jadi field di `IsNavigationTarget`, bukan daftar terpisah di ko
 Jangan menyelesaikannya dengan menyalin ulang nama — salinan pasti melenceng lagi.
 
 **Mitigasi sementara:** ikuti prosedur di
-[`.claude/skills/tambah-ruangan-navigasi/SKILL.md`](../.claude/skills/tambah-ruangan-navigasi/SKILL.md)
+[`.agents/skills/tambah-ruangan-navigasi/SKILL.md`](../.agents/skills/tambah-ruangan-navigasi/SKILL.md)
 setiap kali menambah/mengubah ruangan.
 
 ---

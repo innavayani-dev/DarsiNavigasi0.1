@@ -22,7 +22,7 @@ VPS** dan **63 titik ruangan**.
 | Tahu kenapa dibangun begini | [`docs/DECISIONS.md`](docs/DECISIONS.md) |
 | Tahu apa yang rusak / berisiko | [`docs/KNOWN-ISSUES.md`](docs/KNOWN-ISSUES.md) |
 | Tahu urutan kerja menuju rilis | [`docs/ROADMAP.md`](docs/ROADMAP.md) |
-| Menambah ruangan atau peta baru | [`.claude/skills/`](.claude/skills/) |
+| Menambah ruangan atau peta baru | [`.agents/skills/`](.agents/skills/) |
 
 ---
 
