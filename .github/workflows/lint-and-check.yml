@@ -1,0 +1,45 @@
+name: Lint and Security Check
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  security-and-lint:
+    name: Code Quality & Security Guardrails
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check for Forbidden Binary Files (APK/AAB)
+        run: |
+          echo "Scanning for forbidden binary files..."
+          FORBIDDEN_FILES=$(git ls-files "*.apk" "*.aab")
+          if [ -n "$FORBIDDEN_FILES" ]; then
+            echo "::error::Forbidden binary files found in repository index: $FORBIDDEN_FILES"
+            echo "Please remove APK/AAB files from git tracking. Build artifacts belong in GitHub Releases."
+            exit 1
+          fi
+          echo "No forbidden binary files found."
+
+      - name: Check App Config Example Syntax
+        run: |
+          if [ -f "Assets/Resources/appconfig.example.json" ]; then
+            python3 -m json.tool Assets/Resources/appconfig.example.json > /dev/null
+            echo "Assets/Resources/appconfig.example.json is valid JSON."
+          fi
+
+      - name: Scan for Plaintext Immersal Developer Token
+        run: |
+          echo "Scanning scene files for hardcoded developerToken..."
+          FOUND_TOKENS=$(grep -iE "developerToken: [a-f0-9]{32,}" Assets/Scenes/6_AR\ Navigasi.unity || true)
+          if [ -n "$FOUND_TOKENS" ]; then
+            echo "::error::Hardcoded developerToken found in scene 6_AR Navigasi.unity!"
+            echo "Please clear developerToken from scene. Token must be loaded via ImmersalTokenLoader from appconfig.json."
+            exit 1
+          fi
+          echo "No hardcoded developerTokens found in scene."

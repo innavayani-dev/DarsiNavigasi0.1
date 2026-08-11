@@ -1,0 +1,47 @@
+name: Unity Automated Tests
+
+on:
+  pull_request:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    name: Run Unity Unit Tests (${{ matrix.testMode }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        testMode: [ EditMode, PlayMode ]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Cache Unity Library Folder
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-UnityTests-${{ matrix.testMode }}-${{ hashFiles('Assets/**', 'Packages/manifest.json', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-UnityTests-${{ matrix.testMode }}-
+            Library-
+
+      - name: Run Unity Tests via GameCI
+        uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          unityVersion: 2022.3.62f2
+          testMode: ${{ matrix.testMode }}
+          artifactsPath: ${{ matrix.testMode }}-artifacts
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Test Results Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Test-Results-${{ matrix.testMode }}
+          path: ${{ matrix.testMode }}-artifacts
